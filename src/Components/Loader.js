@@ -1,74 +1,127 @@
-import React, { useEffect, useRef } from "react";
-import { gsap } from "gsap";
-import { useNavigate } from "react-router-dom";
+import React, { useEffect, useRef } from 'react';
+import { gsap } from 'gsap';
 
-const Loader = () => {
+const Loader = ({ onLoadingComplete }) => {
   const loaderRef = useRef(null);
-  const textRef = useRef([]);
-  const navigate = useNavigate();
+  const circleRef = useRef(null);
+  const stemRef = useRef(null);
+  const leftLeafRef = useRef(null);
+  const rightLeafRef = useRef(null);
+  const textRef = useRef(null);
 
   useEffect(() => {
-    const timeline = gsap.timeline();
-
-    // Step 1: Slide in the beige overlay
-    timeline.to(loaderRef.current, {
-      x: 0,
-      duration: 1,
-      ease: "power3.out",
+    const tl = gsap.timeline({
+      onComplete: () => {
+        setTimeout(() => {
+          gsap.to(loaderRef.current, {
+            opacity: 0,
+            duration: 0.5,
+            onComplete: onLoadingComplete
+          });
+        }, 500);
+      }
     });
 
-    // Step 2: Animate text appearance with stagger
-    timeline.to(
-      textRef.current,
-      {
-        opacity: 1,
-        duration: 0.5,
-        ease: "power3.out",
-        stagger: 0.3, // Staggering each sentence by 0.3 seconds
-      },
-      "-=0.5" // Starts 0.5 seconds before the previous animation ends
-    );
-
-    // Step 3: Slide out the beige overlay
-    timeline.to(loaderRef.current, {
-      x: "100%",
-      duration: 1,
-      ease: "power3.inOut",
-      delay: 0.5,
+    gsap.set([leftLeafRef.current, rightLeafRef.current], {
+      scale: 0,
+      opacity: 0
+    });
+    gsap.set(stemRef.current, {
+      scaleY: 0,
+      transformOrigin: 'bottom'
+    });
+    gsap.set(circleRef.current, {
+      scale: 0,
+      opacity: 0
+    });
+    gsap.set(textRef.current, {
+      opacity: 0,
+      y: 20
     });
 
-    // Navigate to home after 10 seconds
-    const timer = setTimeout(() => {
-      navigate("/home");
-    }, 10000);
+    tl.to(circleRef.current, {
+      scale: 1,
+      opacity: 1,
+      duration: 0.8,
+      ease: "elastic.out(1, 0.75)"
+    })
+    .to(stemRef.current, {
+      scaleY: 1,
+      duration: 1,
+      ease: "power4.out"
+    }, "-=0.3")
+    .to([leftLeafRef.current, rightLeafRef.current], {
+      scale: 1,
+      opacity: 1,
+      duration: 0.8,
+      stagger: 0.1,
+      ease: "back.out(1.7)"
+    }, "-=0.4")
+    .to(textRef.current, {
+      opacity: 1,
+      y: 0,
+      duration: 0.5,
+      ease: "power2.out"
+    }, "-=0.3");
 
-    // Cleanup the timeout when the component unmounts
-    return () => clearTimeout(timer);
-  }, [navigate]);
+  }, [onLoadingComplete]);
 
   return (
-    <div className="relative min-h-screen bg-beige-300">
-      {/* Beige overlay for loader */}
-      <div
-        ref={loaderRef}
-        className="fixed inset-0 bg-beige-300 translate-x-full flex items-center justify-center"
+    <div 
+      ref={loaderRef}
+      className="fixed inset-0 bg-white z-50 flex flex-col items-center justify-center"
+    >
+      <div className="w-32 h-32 md:w-40 md:h-40 relative">
+        <svg 
+          viewBox="0 0 100 100" 
+          className="w-full h-full"
+        >
+          <circle
+            ref={circleRef}
+            cx="50"
+            cy="50"
+            r="50"
+            fill="#8CC63F"
+          />
+          
+          <path
+            ref={stemRef}
+            d="M50 75 L50 35"
+            stroke="white"
+            strokeWidth="4"
+            fill="none"
+            strokeLinecap="round"
+          />
+          
+          <path
+            ref={leftLeafRef}
+            d="M50 35 Q40 25 35 35"
+            stroke="white"
+            strokeWidth="4"
+            fill="none"
+            strokeLinecap="round"
+          />
+          
+          <path
+            ref={rightLeafRef}
+            d="M50 35 Q60 25 65 35"
+            stroke="white"
+            strokeWidth="4"
+            fill="none"
+            strokeLinecap="round"
+          />
+        </svg>
+      </div>
+
+      <div 
+        ref={textRef}
+        className="mt-6 text-2xl md:text-3xl font-bold tracking-wider text-green-600"
       >
-        <div className="text-center text-green-700 text-5xl font-bold space-y-4">
-          <p ref={(el) => (textRef.current[0] = el)} className="opacity-0">
-            Discover
-          </p>
-          <p ref={(el) => (textRef.current[1] = el)} className="opacity-0">
-            the Eco-Friendly
-          </p>
-          <p ref={(el) => (textRef.current[2] = el)} className="opacity-0">
-            Toothbrush
-          </p>
-        </div>
+        BAMBRUSH
       </div>
     </div>
   );
 };
 
 export default Loader;
-
 

@@ -1,18 +1,33 @@
-import React from 'react'
-import Navbar from '../Components/Navbar';
+import React, { useState } from 'react';
 import Hero from '../Components/Hero';
+import Navbar from '../Components/Navbar';
+import Loader from '../Components/Loader';
+
 import Features from '../Components/Features';
-import Contact from './Contact';
+import Cycle from '../Components/Cycle';
+import Why from '../Components/Why';
+
+
+
 
 function Home() {
-  return (
-    <div className="font-sans">
+  const [isLoading, setIsLoading] = useState(true);
  
-    <Hero />
-    <Features />
-    <Contact />
-</div>
-  )
+  const handleLoadingComplete = () => {
+    setIsLoading(false);
+  };
+  
+  return (
+    <>
+      <Loader onLoadingComplete={handleLoadingComplete} />
+      <Navbar isLoading={isLoading} />
+      <Hero isLoading={isLoading} />
+      <Features />
+      <Cycle />
+      <Why />
+
+    </>
+  );
 }
 
-export default Home
+export default Home;

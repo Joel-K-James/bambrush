@@ -1,14 +1,27 @@
-
-
+import React, { useState, useEffect } from 'react';
 import Loader from './Components/Loader';
-import Home from './Pages/Home';
+import Allroutes from './Routes/Allroutes';
+
 
 function App() {
-  return (
-    <div className="App">
-      <Home />
-    </div>
-  );
+ const [isLoading, setIsLoading] = useState(true);
+
+ useEffect(() => {
+   setIsLoading(false);
+ }, []);
+
+ return (
+   <>
+     {isLoading ? (
+       <Loader onLoadingComplete={() => setIsLoading(false)} />
+     ) : (
+       <>
+
+         <Allroutes />
+       </>
+     )}
+   </>
+ );
 }
 
 export default App;

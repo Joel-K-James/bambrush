@@ -1,42 +1,137 @@
-// src/components/Navbar.js
-import React, { useRef, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
+import logo from '../Assets/bambrush_logo.png'; 
 
-const Navbar = () => {
-  const navbarRef = useRef(null);
+const Navbar = ({ isLoading }) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const logoRef = useRef(null);
+  const navItemsRef = useRef([]);
+  const mobileMenuRef = useRef(null);
+  const timelineRef = useRef(null);
 
   useEffect(() => {
-    gsap.from(navbarRef.current, {
+    gsap.set([logoRef.current, ...navItemsRef.current], {
       opacity: 0,
-      y: -50,
-      duration: 1,
-      ease: 'power3.out',
+      y: -20
     });
+
+    timelineRef.current = gsap.timeline({ paused: true });
+
+    timelineRef.current
+      .to(logoRef.current, {
+        opacity: 1,
+        y: 0,
+        duration: 0.6,
+        ease: "power2.out"
+      })
+      .to(navItemsRef.current, {
+        opacity: 1,
+        y: 0,
+        duration: 0.6,
+        stagger: 0.1,
+        ease: "power2.out"
+      }, "-=0.3");
+
   }, []);
 
+  useEffect(() => {
+    if (!isLoading && timelineRef.current) {
+      setTimeout(() => {
+        timelineRef.current.play();
+      }, 500);
+    }
+  }, [isLoading]);
+
+  useEffect(() => {
+    if (mobileMenuRef.current) {
+      gsap.to(mobileMenuRef.current, {
+        height: isOpen ? "auto" : 0,
+        opacity: isOpen ? 1 : 0,
+        duration: 0.3,
+        ease: "power2.inOut"
+      });
+    }
+  }, [isOpen]);
+
   return (
-    <nav ref={navbarRef} className="bg-white shadow-md fixed w-full top-0 z-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
-          {/* Logo */}
-          <div className="flex items-center space-x-2">
-            <img src="/logo.png" alt="Logo" className="w-8 h-8" />
-            <span className="text-xl font-bold text-gray-800">BAMBRUSH</span>
+    <header className="fixed w-full py-4 px-8 z-[100]">
+      <nav className="max-w-7xl mx-auto relative">
+        <div className="flex items-center justify-between bg-transparent">
+          <a 
+            ref={logoRef}
+            href="/" 
+            className="flex items-center gap-3 text-green-800 relative z-[100]"
+          >
+            <img 
+              src={logo} 
+              alt="BamBrush Logo" 
+              className="h-12 w-16"
+            />
+            <span className="text-3xl font-medium tracking-wide">
+              BAMBRUSH
+            </span>
+          </a>
+
+          <div className="hidden md:flex items-center space-x-12 relative z-[100]">
+            {['Home', 'About', 'View', 'Contact'].map((item, index) => (
+              <a
+                key={item}
+                ref={el => navItemsRef.current[index] = el}
+                href={`/${item.toLowerCase()}`}
+                className="text-lg text-green-800 hover:text-green-600 transition-colors"
+              >
+                {item}
+              </a>
+            ))}
           </div>
-          
-          {/* Navigation Links */}
-          <div className="hidden md:flex space-x-6 text-gray-700 font-medium">
-            <a href="#about" className="hover:text-gray-900">About</a>
-            <a href="#features" className="hover:text-gray-900">Features</a>
-            <a href="#contact" className="hover:text-gray-900">Contact</a>
-          </div>
+
+          <button 
+            className="md:hidden text-green-800 relative z-[100]"
+            onClick={() => setIsOpen(!isOpen)}
+          >
+            <svg 
+              className="w-6 h-6" 
+              fill="none" 
+              stroke="currentColor" 
+              viewBox="0 0 24 24"
+            >
+              {isOpen ? (
+                <path 
+                  strokeLinecap="round" 
+                  strokeLinejoin="round" 
+                  strokeWidth={2} 
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              ) : (
+                <path 
+                  strokeLinecap="round" 
+                  strokeLinejoin="round" 
+                  strokeWidth={2} 
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
+              )}
+            </svg>
+          </button>
         </div>
-      </div>
-      <div className="h-1 bg-gradient-to-r from-green-400 to-blue-400"></div>
-    </nav>
+
+        <div 
+          ref={mobileMenuRef}
+          className="md:hidden overflow-hidden relative z-[100] bg-white/80 backdrop-blur-sm rounded-lg mt-2"
+          style={{ height: 0, opacity: 0 }}
+        >
+          {['Home', 'About', 'View', 'Contact'].map((item) => (
+            <a
+              key={item}
+              href={`/${item.toLowerCase()}`}
+              className="block py-2 px-4 text-lg text-green-800 hover:text-green-600 transition-colors"
+            >
+              {item}
+            </a>
+          ))}
+        </div>
+      </nav>
+    </header>
   );
 };
 
 export default Navbar;
-
-
