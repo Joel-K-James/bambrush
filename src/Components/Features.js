@@ -255,12 +255,14 @@ const Features = () => {
             </div>
           </div>
           <div className="flex justify-center perspective-1000">
-            <img
-              ref={el => imagesRef.current[2] = el}
-              src={brush3}
-              alt="Bamboo Toothbrush Specifications"
-              className="w-[80%] md:w-[100%] max-w-[500px] transform transition-transform duration-300 hover:scale-105"
-            />
+            <div className="w-[80%] md:w-[100%] max-w-[500px] p-8 rounded-2xl bg-gradient-to-br from-white via-[#e8f3e8] to-[#8AB660]">
+              <img
+                ref={el => imagesRef.current[2] = el}
+                src={brush3}
+                alt="Bamboo Toothbrush Specifications"
+                className="w-full h-full object-contain transform transition-transform duration-300 hover:scale-105"
+              />
+            </div>
           </div>
         </div>
       </section>

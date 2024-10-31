@@ -2,16 +2,12 @@ import React, { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import brush from "../Assets/1.webp";
-import bamboo from "../Assets/side_bamboo_1.webp";
-import leaf from "../Assets/home_asset_1.webp";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const Hero = ({ isLoading }) => {
   const mainTextRef = useRef(null);
   const brushRef = useRef(null);
-  const bambooRef = useRef(null);
-  const leftBambooRef = useRef(null);
   const timelineRef = useRef(null);
   const sectionRef = useRef(null);
   const aboutContentRef = useRef(null);
@@ -25,20 +21,6 @@ const Hero = ({ isLoading }) => {
     gsap.set([aboutContentRef.current, aboutTitleRef.current], {
       opacity: 0,
       y: 50
-    });
-    
-    gsap.set(leftBambooRef.current, {
-      opacity: 0,
-      y: "-100%",
-      x: "-100%",
-      rotation: -15
-    });
-    
-    gsap.set(bambooRef.current, {
-      opacity: 0,
-      y: "-100%",
-      x: "100%",
-      rotation: 15
     });
     
     timelineRef.current = gsap.timeline({ paused: true });
@@ -55,23 +37,15 @@ const Hero = ({ isLoading }) => {
         opacity: 1,
         rotation: 0,
         x: "-50%",
-        y: "-50%",
+        y: window.innerWidth < 768 ? "-20%" : "-50%",
         duration: 1.5,
         ease: "power3.out",
         from: { 
           rotation: 10,
           x: "50%",
-          y: "-50%"
+          y: window.innerWidth < 768 ? "-20%" : "-50%"
         }
-      }, "-=0.5")
-      .to([leftBambooRef.current, bambooRef.current], {
-        opacity: 1,
-        y: 0,
-        x: 0,
-        rotation: 0,
-        duration: 1.8,
-        ease: "bounce.out"
-      }, "-=1");
+      }, "-=0.5");
 
     const mm = gsap.matchMedia();
 
@@ -143,8 +117,8 @@ const Hero = ({ isLoading }) => {
         onEnter: () => {
           gsap.to(brushRef.current, {
             rotation: 0,
-            x: "50%",
-            y: "30vh",
+            x: "-50%",
+            y: "45vh",
             scale: 0.8,
             duration: 1,
             ease: "power2.inOut"
@@ -154,7 +128,7 @@ const Hero = ({ isLoading }) => {
           gsap.to(brushRef.current, {
             rotation: 0,
             x: "-50%",
-            y: "-50%",
+            y: "-20%",
             scale: 1,
             opacity: 1,
             duration: 1,
@@ -220,14 +194,6 @@ const Hero = ({ isLoading }) => {
         ref={sectionRef}
         className="relative h-screen overflow-hidden bg-gradient-to-br from-[rgb(249,253,241)] to-[rgb(83,147,73)]"
       >
-        <div ref={leftBambooRef} className="absolute left-0 top-0 h-full w-auto z-[1]">
-          <img
-            src={leaf}
-            alt="Left Bamboo Pattern"
-            className="h-full w-auto object-contain transform rotate-90"
-          />
-        </div>
-
         <div className="relative z-[1] h-full flex items-center justify-center">
           <h1 ref={mainTextRef} className="text-[15vw] text-white font-bold">
             BAMBRUSH
@@ -238,54 +204,34 @@ const Hero = ({ isLoading }) => {
           ref={brushRef}
           src={brush}
           alt="Bamboo Toothbrush"
-          className="fixed top-1/2 left-1/2 w-[60%] md:w-[40%] lg:w-[35%] z-50"
+          className="fixed top-[55%] md:top-1/2 left-1/2 w-[60%] md:w-[45%] lg:w-[40%] z-50"
         />
-
-        <div ref={bambooRef} className="absolute right-0 top-10 h-full w-1/4 z-[1] hidden md:block">
-          <img
-            src={bamboo}
-            alt="Right Bamboo Pattern"
-            className="h-full object-cover object-right pt-10"
-          />
-        </div>
       </section>
 
       <section className="about-section relative min-h-screen bg-[#f5f5f5] overflow-hidden">
         <div className="container mx-auto px-4 py-16 md:py-20">
-          <div className="grid grid-cols-1 gap-8">
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
             <div>
               <h2 
                 ref={aboutTitleRef} 
                 className="text-[#8AB660] text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold mb-8 md:mb-16"
               >
                 ABOUT
-                <br />
                 BAMBRUSH
               </h2>
               <div 
                 ref={aboutContentRef} 
-                className="text-gray-800 text-xl sm:text-2xl md:text-3xl leading-relaxed"
+                className="text-[#967259] max-w-[600px] space-y-8 text-xl sm:text-2xl md:text-3xl leading-relaxed font-medium"
               >
-                <p className="mb-6 md:mb-8">
-                  Welcome to BamBrush,
-                  <br />
-                  your go-to brand for eco-friendly
-                  <br />
-                  bamboo toothbrushes.
+                <p className="mb-8">
+                  Welcome to BamBrush, your go-to brand for eco-friendly bamboo toothbrushes.
                 </p>
                 <p>
-                  Our mission is to reduce plastic waste
-                  <br />
-                  and promote sustainable living
-                  <br />
-                  by providing high-quality
-                  <br />
-                  bamboo toothbrushes
-                  <br />
-                  at affordable prices.
+                  Our mission is to reduce plastic waste and promote sustainable living by providing high-quality bamboo toothbrushes at affordable prices.
                 </p>
               </div>
             </div>
+            <div className="hidden md:block"></div>
           </div>
         </div>
       </section>

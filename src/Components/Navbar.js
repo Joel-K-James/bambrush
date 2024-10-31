@@ -31,7 +31,6 @@ const Navbar = ({ isLoading }) => {
         stagger: 0.1,
         ease: "power2.out"
       }, "-=0.3");
-
   }, []);
 
   useEffect(() => {
@@ -65,7 +64,7 @@ const Navbar = ({ isLoading }) => {
   ];
 
   return (
-    <header className="fixed w-full py-4 px-8 z-[100]">
+    <header className="fixed w-full py-4 px-8 z-[100] bg-white/95 backdrop-blur-sm shadow-sm">
       <nav className="max-w-7xl mx-auto relative">
         <div className="flex items-center justify-between bg-transparent">
           <a 

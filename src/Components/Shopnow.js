@@ -1,16 +1,12 @@
 import React, { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import leaf from "../Assets/home_asset_1.webp";
-import leaf2 from "../Assets/home_asset_2.webp";
 import cup from "../Assets/DSC01711.webp";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const Shopnow = ({ onShopClick }) => {
   const containerRef = useRef(null);
-  const bambooLeftRef = useRef(null);
-  const bambooRightRef = useRef(null);
   const brushRef = useRef(null);
   const textRef = useRef(null);
   const imageWrapperRef = useRef(null);
@@ -18,12 +14,6 @@ const Shopnow = ({ onShopClick }) => {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.set([bambooLeftRef.current, bambooRightRef.current], {
-        opacity: 0,
-        scale: 0.8,
-        x: 0
-      });
-      
       gsap.set(textRef.current, {
         opacity: 0,
         y: 30
@@ -64,13 +54,6 @@ const Shopnow = ({ onShopClick }) => {
           duration: 1,
           ease: 'power3.out'
         }, '-=0.5')
-        .to([bambooLeftRef.current, bambooRightRef.current], {
-          opacity: 1,
-          scale: 1,
-          duration: 1,
-          stagger: 0.2,
-          ease: 'power3.out'
-        }, '-=0.8')
         .to(textRef.current, {
           opacity: 1,
           y: 0,
@@ -89,18 +72,6 @@ const Shopnow = ({ onShopClick }) => {
       });
 
       scrollTl
-        .to(bambooLeftRef.current, {
-          x: '-20vw',
-          rotate: -5,
-          duration: 1,
-          ease: 'power1.inOut'
-        }, 0)
-        .to(bambooRightRef.current, {
-          x: '20vw',
-          rotate: 5,
-          duration: 1,
-          ease: 'power1.inOut'
-        }, 0)
         .to(brushRef.current, {
           y: -20,
           scale: 1.05,
@@ -129,18 +100,6 @@ const Shopnow = ({ onShopClick }) => {
         />
         
         <div className="relative h-screen flex items-center justify-center">
-          <div 
-            ref={bambooLeftRef} 
-            className="absolute left-0 h-full flex items-center pointer-events-none" 
-            style={{ width: '25%' }}
-          >
-            <img 
-              src={leaf} 
-              alt="" 
-              className="w-full h-auto max-h-[80vh] object-contain object-right-center"
-            />
-          </div>
-
           <div ref={brushRef} className="relative z-10 flex flex-col items-center w-full max-w-2xl mx-auto px-4">
             <div className="relative mb-8" ref={imageWrapperRef}>
               <div className="glow-effect relative bg-white rounded-[2rem] p-6 shadow-lg w-full aspect-video flex items-center justify-center overflow-hidden transition-shadow duration-300">
@@ -171,18 +130,6 @@ const Shopnow = ({ onShopClick }) => {
                 </a>
               </div>
             </div>
-          </div>
-
-          <div 
-            ref={bambooRightRef} 
-            className="absolute right-0 h-full flex items-center pointer-events-none" 
-            style={{ width: '25%' }}
-          >
-            <img 
-              src={leaf2} 
-              alt="" 
-              className="w-full h-auto max-h-[80vh] object-contain object-left-center"
-            />
           </div>
         </div>
       </div>
