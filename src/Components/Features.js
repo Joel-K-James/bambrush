@@ -106,7 +106,6 @@ const Features = () => {
         images[i].addEventListener('mouseenter', () => {
           gsap.to(images[i], {
             scale: 1.05,
-            rotation: 5,
             duration: 0.4,
             ease: "power2.out"
           });
@@ -115,7 +114,6 @@ const Features = () => {
         images[i].addEventListener('mouseleave', () => {
           gsap.to(images[i], {
             scale: 1,
-            rotation: 0,
             duration: 0.4,
             ease: "power2.in"
           });
@@ -149,7 +147,7 @@ const Features = () => {
   }, []);
 
   return (
-    <div ref={containerRef} className="bg-gradient-to-b from-[#F5EDE4] to-[#F9FDF1] py-20">
+    <div ref={containerRef} className="bg-[#F9F6F3]">
       <section 
         ref={el => sectionsRef.current[0] = el}
         className="min-h-screen flex items-center justify-center px-4 md:px-8 relative overflow-hidden"
@@ -170,12 +168,14 @@ const Features = () => {
             </p>
           </div>
           <div className="flex justify-center perspective-1000">
-            <img
-              ref={el => imagesRef.current[0] = el}
-              src={brush1}
-              alt="Bamboo Toothbrush"
-              className="w-[80%] md:w-[100%] max-w-[500px] transform transition-transform duration-300 hover:scale-110 hover:cursor-pointer"
-            />
+            <div className="relative w-[80%] md:w-[100%] max-w-[500px]">
+              <img
+                ref={el => imagesRef.current[0] = el}
+                src={brush1}
+                alt="Bamboo Toothbrush"
+                className="relative w-full h-full object-contain transform transition-transform duration-300 hover:scale-105 rounded-[12px]"
+              />
+            </div>
           </div>
         </div>
       </section>
@@ -190,7 +190,7 @@ const Features = () => {
               ref={el => imagesRef.current[1] = el}
               src={brush2}
               alt="Bamboo Toothbrush Features"
-              className="w-[80%] md:w-[100%] max-w-[500px] transform transition-transform duration-300 hover:scale-110 hover:cursor-pointer"
+              className="w-[80%] md:w-[100%] max-w-[500px] transform transition-transform duration-300 hover:scale-105"
             />
           </div>
           <div className="order-1 md:order-2">
@@ -259,7 +259,7 @@ const Features = () => {
               ref={el => imagesRef.current[2] = el}
               src={brush3}
               alt="Bamboo Toothbrush Specifications"
-              className="w-[80%] md:w-[100%] max-w-[500px] transform transition-transform duration-300 hover:scale-110 hover:cursor-pointer"
+              className="w-[80%] md:w-[100%] max-w-[500px] transform transition-transform duration-300 hover:scale-105"
             />
           </div>
         </div>

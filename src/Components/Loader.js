@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 
 const Loader = ({ onLoadingComplete }) => {
@@ -8,15 +8,30 @@ const Loader = ({ onLoadingComplete }) => {
   const leftLeafRef = useRef(null);
   const rightLeafRef = useRef(null);
   const textRef = useRef(null);
+  const [isHidden, setIsHidden] = useState(false);
 
   useEffect(() => {
+    if (
+      !loaderRef.current ||
+      !circleRef.current ||
+      !stemRef.current ||
+      !leftLeafRef.current ||
+      !rightLeafRef.current ||
+      !textRef.current
+    ) {
+      return; // Exit if any ref is null
+    }
+
     const tl = gsap.timeline({
       onComplete: () => {
         setTimeout(() => {
           gsap.to(loaderRef.current, {
             opacity: 0,
             duration: 0.5,
-            onComplete: onLoadingComplete
+            onComplete: () => {
+              setIsHidden(true); // Set hidden after fade out
+              onLoadingComplete();
+            }
           });
         }, 500);
       }
@@ -65,6 +80,8 @@ const Loader = ({ onLoadingComplete }) => {
     }, "-=0.3");
 
   }, [onLoadingComplete]);
+
+  if (isHidden) return null; // Hide component completely after animation
 
   return (
     <div 
