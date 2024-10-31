@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import soilGrassImg from '../Assets/soil.webp';
-import brushImg from '../Assets/1.png';
+import brushImg from '../Assets/1.webp';
 import { Leaf } from 'lucide-react';
 
 const Brushbio = () => {

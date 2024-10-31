@@ -1,8 +1,8 @@
 import React, { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import leaf from "../Assets/home_asset_1.png";
-import leaf2 from "../Assets/home_asset_2.png";
+import leaf from "../Assets/home_asset_1.webp";
+import leaf2 from "../Assets/home_asset_2.webp";
 import cup from "../Assets/DSC01711.webp";
 
 gsap.registerPlugin(ScrollTrigger);

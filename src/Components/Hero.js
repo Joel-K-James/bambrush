@@ -1,9 +1,9 @@
 import React, { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import brush from "../Assets/1.png";
-import bamboo from "../Assets/side_bamboo_1.png";
-import leaf from "../Assets/home_asset_1.png";
+import brush from "../Assets/1.webp";
+import bamboo from "../Assets/side_bamboo_1.webp";
+import leaf from "../Assets/home_asset_1.webp";
 
 gsap.registerPlugin(ScrollTrigger);
 

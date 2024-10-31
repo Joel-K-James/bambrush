@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import { Sprout, Recycle, Users, Heart, Target, Eye } from 'lucide-react';
-import MissionImage from "../Assets/DSC01636.png";
+import MissionImage from "../Assets/DSC01636.webp";
 import ProblemImage from "../Assets/DSC01711.webp";
-import VisionImage from "../Assets/5.png";
+import VisionImage from "../Assets/5.webp";
 import Navbar from '../Components/Navbar';
 import Footer from '../Components/Footer';
 import Brushbio from '../Components/Brushbio';
