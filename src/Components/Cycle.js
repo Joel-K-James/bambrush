@@ -56,8 +56,8 @@ const Cycle = () => {
   }, []);
 
   return (
-    <div ref={containerRef} className="min-h-screen bg-green-50 px-4 py-10 md:py-20 overflow-hidden">
-      <h1 className="text-2xl md:text-4xl font-bold text-green-600 text-center mb-8 md:mb-16">
+    <div ref={containerRef} className="min-h-screen bg-white px-4 py-10 md:py-20 overflow-hidden">
+      <h1 className="text-2xl md:text-4xl font-bold text-black text-center mb-8 md:mb-16">
         BAMBRUSH CYCLE
       </h1>
       

@@ -5,7 +5,6 @@ import ProblemImage from "../Assets/DSC01711.webp";
 import VisionImage from "../Assets/5.webp";
 import Navbar from '../Components/Navbar';
 import Footer from '../Components/Footer';
-import Brushbio from '../Components/Brushbio';
 
 const useScrollAnimation = () => {
   useEffect(() => {
@@ -35,10 +34,10 @@ const useScrollAnimation = () => {
 };
 
 const Card = ({ icon: Icon, title, content }) => (
-  <div className="scroll-animate opacity-0 -translate-x-20 transition-all duration-700 bg-white/90 backdrop-blur-sm p-6 rounded-lg shadow-xl hover:shadow-2xl hover:-translate-y-2 hover:rotate-1 mx-auto max-w-md w-full">
-    <Icon className="w-12 h-12 mb-4 text-green-700" />
-    <h3 className="text-xl font-bold mb-3 text-green-800">{title}</h3>
-    <p className="text-green-700 leading-relaxed">{content}</p>
+  <div className="scroll-animate opacity-0 -translate-x-20 transition-all duration-700 bg-white backdrop-blur-sm p-6 rounded-lg shadow-xl hover:shadow-2xl hover:-translate-y-2 hover:rotate-1 mx-auto max-w-md w-full">
+    <Icon className="w-12 h-12 mb-4 text-[#2D6A4F]" />
+    <h3 className="text-xl font-bold mb-3 text-black">{title}</h3>
+    <p className="text-gray-600 leading-relaxed">{content}</p>
   </div>
 );
 
@@ -74,29 +73,29 @@ const About = () => {
   return (
     <>
     <Navbar />
-    <div className="min-h-screen bg-gradient-to-b from-beige-300 to-green-50">
-      <section className="min-h-screen flex items-center justify-center bg-gradient-to-br from-beige-300 via-green-100 to-beige-300 relative overflow-hidden">
+    <div className="min-h-screen bg-white">
+      <section className="min-h-screen flex items-center justify-center bg-white relative overflow-hidden">
         <div className="w-full max-w-4xl mx-auto px-6 md:px-8">
           <div className="text-center scroll-animate opacity-0 -translate-x-20 transition-all duration-700">
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 text-green-800 break-words">
+            <h1 className="text-4xl md:text-6xl font-bold mb-6 text-black break-words">
               About BamBrush
             </h1>
-            <p className="text-xl md:text-2xl text-green-700 leading-relaxed px-4 sm:px-6 md:px-8">
+            <p className="text-xl md:text-2xl text-gray-600 leading-relaxed px-4 sm:px-6 md:px-8">
               Leading the way in eco-friendly oral care solutions for a sustainable future
             </p>
           </div>
         </div>
       </section>
 
-      <section className="py-20 bg-white/50">
+      <section className="py-20 bg-white">
         <div className="w-full">
           <ImageSection 
             image={MissionImage}
             alt="BamBrush Sustainable Products"
           >
             <div className="space-y-6">
-              <h2 className="text-3xl font-bold text-green-800">Our Mission</h2>
-              <p className="text-lg text-green-700 leading-relaxed">
+              <h2 className="text-3xl font-bold text-black">Our Mission</h2>
+              <p className="text-lg text-gray-600 leading-relaxed">
                 At BamBrush, we're revolutionizing the oral care industry with sustainable alternatives 
                 to plastic products. Our mission extends beyond just providing eco-friendly products – 
                 we're creating a movement towards sustainable business practices worldwide.
@@ -106,9 +105,9 @@ const About = () => {
         </div>
       </section>
 
-      <section className="py-20 bg-beige-300/20">
+      <section className="py-20 bg-white">
         <div className="w-full max-w-6xl mx-auto px-6 md:px-8">
-          <h2 className="text-3xl font-bold mb-12 text-center text-green-800 scroll-animate opacity-0 -translate-x-20 transition-all duration-700">
+          <h2 className="text-3xl font-bold mb-12 text-center text-black scroll-animate opacity-0 -translate-x-20 transition-all duration-700">
             Our Core Values
           </h2>
           <div className="grid md:grid-cols-2 gap-8">
@@ -126,7 +125,7 @@ const About = () => {
         </div>
       </section>
 
-      <section className="py-20 bg-white/50">
+      <section className="py-20 bg-white">
         <div className="w-full">
           <ImageSection 
             image={ProblemImage}
@@ -134,8 +133,8 @@ const About = () => {
             reverse
           >
             <div className="space-y-6">
-              <h2 className="text-3xl font-bold text-green-800">The Plastic Problem</h2>
-              <p className="text-lg text-green-700 leading-relaxed">
+              <h2 className="text-3xl font-bold text-black">The Plastic Problem</h2>
+              <p className="text-lg text-gray-600 leading-relaxed">
                 With over 264 million plastic toothbrushes discarded yearly in the UK alone, 
                 the environmental impact is staggering. We're changing this narrative by providing 
                 sustainable alternatives that don't compromise on quality or affordability.
@@ -145,9 +144,9 @@ const About = () => {
         </div>
       </section>
 
-      <section className="py-20 bg-beige-300/20">
+      <section className="py-20 bg-white">
         <div className="w-full max-w-6xl mx-auto px-6 md:px-8">
-          <h2 className="text-3xl font-bold mb-12 text-center text-green-800 scroll-animate opacity-0 -translate-x-20 transition-all duration-700">
+          <h2 className="text-3xl font-bold mb-12 text-center text-black scroll-animate opacity-0 -translate-x-20 transition-all duration-700">
             Who We Serve
           </h2>
           <div className="grid md:grid-cols-3 gap-8">
@@ -170,16 +169,16 @@ const About = () => {
         </div>
       </section>
 
-      <section className="py-20 bg-white/50">
+      <section className="py-20 bg-white">
         <div className="w-full">
           <ImageSection 
             image={VisionImage}
             alt="BamBrush Vision"
           >
             <div className="space-y-6">
-              <Eye className="w-16 h-16 text-green-700" />
-              <h2 className="text-3xl font-bold text-green-800">Our Vision</h2>
-              <p className="text-lg text-green-700 leading-relaxed">
+              <Eye className="w-16 h-16 text-[#2D6A4F]" />
+              <h2 className="text-3xl font-bold text-black">Our Vision</h2>
+              <p className="text-lg text-gray-600 leading-relaxed">
                 We envision a future where sustainable products are the norm, not the exception. 
                 Through innovation and education, we're working to create a world where businesses 
                 and consumers naturally choose eco-friendly alternatives, making plastic pollution 
@@ -190,7 +189,6 @@ const About = () => {
         </div>
       </section>
     </div>
-    <Brushbio />
     <Footer />
     </>
   );

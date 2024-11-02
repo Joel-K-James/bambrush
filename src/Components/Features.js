@@ -24,47 +24,30 @@ const Features = () => {
     
     gsap.set(images, {
       opacity: 0,
-      scale: 0.8,
-      rotation: -15,
-      y: 100
+      scale: 0.5,
+      rotation: 20,
     });
 
     gsap.set(headings, {
       opacity: 0,
       y: 50,
-      skewY: 5
     });
 
     gsap.set(texts, {
       opacity: 0,
-      y: 30
+      y: 30,
     });
 
     gsap.set(listItems, {
       opacity: 0,
-      x: -30
+      x: -30,
     });
 
     sections.forEach((section, i) => {
-      let tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: section,
-          start: "top 80%",
-          end: "bottom 20%",
-          toggleActions: "play none none reverse",
-          scrub: 0.5,
-        }
-      });
-
-      tl.to(images[i], {
-        y: -50,
-        duration: 1
-      });
-
       let mainTl = gsap.timeline({
         scrollTrigger: {
           trigger: section,
-          start: "top 60%",
+          start: "top 70%",
           toggleActions: "play none none reverse"
         }
       });
@@ -72,41 +55,40 @@ const Features = () => {
       mainTl.to(headings[i], {
         opacity: 1,
         y: 0,
-        skewY: 0,
-        duration: 1,
+        duration: 0.8,
         ease: "power3.out"
       })
       .to(images[i], {
         opacity: 1,
         scale: 1,
         rotation: 0,
-        duration: 1.2,
+        duration: 1,
         ease: "back.out(1.7)"
-      }, "-=0.7")
+      }, "-=0.4")
 
       if (i === 1) {
         let items = section.querySelectorAll('li');
         mainTl.to(items, {
           opacity: 1,
           x: 0,
-          stagger: 0.15,
-          duration: 0.8,
+          stagger: 0.1,
+          duration: 0.6,
           ease: "power2.out"
-        }, "-=0.5");
+        }, "-=0.4");
       } else {
         mainTl.to(texts[i], {
           opacity: 1,
           y: 0,
-          duration: 0.8,
+          duration: 0.6,
           ease: "power2.out"
-        }, "-=0.5");
+        }, "-=0.4");
       }
 
       if (images[i]) {
         images[i].addEventListener('mouseenter', () => {
           gsap.to(images[i], {
             scale: 1.05,
-            duration: 0.4,
+            duration: 0.3,
             ease: "power2.out"
           });
         });
@@ -114,8 +96,8 @@ const Features = () => {
         images[i].addEventListener('mouseleave', () => {
           gsap.to(images[i], {
             scale: 1,
-            duration: 0.4,
-            ease: "power2.in"
+            duration: 0.3,
+            ease: "power2.inOut"
           });
         });
       }
@@ -125,7 +107,7 @@ const Features = () => {
     gsap.from(specItems, {
       scrollTrigger: {
         trigger: specItems[0],
-        start: "top 70%",
+        start: "top 75%",
         toggleActions: "play none none reverse"
       },
       opacity: 0,
@@ -147,7 +129,7 @@ const Features = () => {
   }, []);
 
   return (
-    <div ref={containerRef} className="bg-[#F9F6F3]">
+    <div ref={containerRef} className="bg-white">
       <section 
         ref={el => sectionsRef.current[0] = el}
         className="min-h-screen flex items-center justify-center px-4 md:px-8 relative overflow-hidden"
@@ -156,24 +138,24 @@ const Features = () => {
           <div>
             <h1 
               ref={el => headingsRef.current[0] = el}
-              className="text-5xl md:text-7xl font-bold text-[#8AB660] mb-8"
+              className="text-5xl md:text-7xl font-bold text-black mb-8"
             >
               PRODUCT OVERVIEW
             </h1>
             <p 
               ref={el => textsRef.current[0] = el}
-              className="text-xl md:text-2xl text-[#8B7355] leading-relaxed"
+              className="text-xl md:text-2xl text-gray-600 leading-relaxed"
             >
               BamBrush bamboo toothbrushes are made from 100% biodegradable bamboo. The bristles are soft and gentle on your gums while providing effective cleaning. Perfect for those who are environmentally conscious and want to reduce their carbon footprint.
             </p>
           </div>
-          <div className="flex justify-center perspective-1000">
-            <div className="relative w-[80%] md:w-[100%] max-w-[500px]">
+          <div className="flex justify-center">
+            <div className="relative w-[80%] md:w-[100%] max-w-[500px] group">
               <img
                 ref={el => imagesRef.current[0] = el}
                 src={brush1}
                 alt="Bamboo Toothbrush"
-                className="relative w-full h-full object-contain transform transition-transform duration-300 hover:scale-105 rounded-[12px]"
+                className="relative w-full h-full object-contain shadow-lg rounded-[12px]"
               />
             </div>
           </div>
@@ -185,22 +167,22 @@ const Features = () => {
         className="min-h-screen flex items-center justify-center px-4 md:px-8 relative overflow-hidden"
       >
         <div className="max-w-6xl w-full grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-          <div className="order-2 md:order-1 flex justify-center perspective-1000">
+          <div className="order-2 md:order-1 flex justify-center">
             <img
               ref={el => imagesRef.current[1] = el}
               src={brush2}
               alt="Bamboo Toothbrush Features"
-              className="w-[80%] md:w-[100%] max-w-[500px] transform transition-transform duration-300 hover:scale-105"
+              className="w-[80%] md:w-[100%] max-w-[500px] shadow-lg rounded-[12px]"
             />
           </div>
           <div className="order-1 md:order-2">
             <h1 
               ref={el => headingsRef.current[1] = el}
-              className="text-5xl md:text-7xl font-bold text-[#8AB660] mb-12"
+              className="text-5xl md:text-7xl font-bold text-black mb-12"
             >
               FEATURES
             </h1>
-            <ul className="space-y-6 text-xl md:text-2xl text-[#8B7355]">
+            <ul className="space-y-6 text-xl md:text-2xl text-gray-600">
               {[
                 "Eco-friendly and biodegradable",
                 "Soft bristles for gentle cleaning",
@@ -230,13 +212,13 @@ const Features = () => {
           <div>
             <h1 
               ref={el => headingsRef.current[2] = el}
-              className="text-[2rem] md:text-7xl font-bold text-[#8AB660] mb-12 leading-tight"
+              className="text-[2rem] md:text-7xl font-bold text-black mb-12 leading-tight"
             >
               SPECIFICATIONS
             </h1>
             <div 
               ref={el => textsRef.current[2] = el}
-              className="space-y-6 text-xl md:text-2xl text-[#8B7355]"
+              className="space-y-6 text-xl md:text-2xl text-gray-600"
             >
               {[
                 ["Handle Material", "Bamboo"],
@@ -246,7 +228,7 @@ const Features = () => {
               ].map((spec, index) => (
                 <p 
                   key={index}
-                  className="spec-item flex justify-between border-b border-[#8AB660] pb-2 hover:bg-[#8AB66010] transition-colors duration-300 px-2"
+                  className="spec-item flex justify-between border-b border-gray-300 pb-2 hover:bg-gray-50 transition-colors duration-300 px-2 rounded"
                 >
                   <span className="font-medium">{spec[0]}:</span>
                   <span>{spec[1]}</span>
@@ -254,13 +236,13 @@ const Features = () => {
               ))}
             </div>
           </div>
-          <div className="flex justify-center perspective-1000">
-            <div className="w-[80%] md:w-[100%] max-w-[500px] p-8 rounded-2xl bg-gradient-to-br from-white via-[#e8f3e8] to-[#8AB660]">
+          <div className="flex justify-center">
+            <div className="w-[80%] md:w-[100%] max-w-[500px] p-8 rounded-2xl bg-gradient-to-br from-white via-gray-50 to-gray-100 shadow-xl">
               <img
                 ref={el => imagesRef.current[2] = el}
                 src={brush3}
                 alt="Bamboo Toothbrush Specifications"
-                className="w-full h-full object-contain transform transition-transform duration-300 hover:scale-105"
+                className="w-full h-full object-contain"
               />
             </div>
           </div>

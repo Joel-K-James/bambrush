@@ -68,14 +68,14 @@ const Why = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[linear-gradient(135deg,#f5f5dc_0%,#93c47d_100%)] p-4 sm:p-8">
+    <div className="min-h-screen bg-white p-4 sm:p-8">
       <div 
         ref={containerRef}
-        className="w-full max-w-3xl mx-auto p-4 sm:p-8 rounded-2xl backdrop-blur-md bg-white/20 shadow-xl border border-white/20"
+        className="w-full max-w-3xl mx-auto p-4 sm:p-8 rounded-2xl backdrop-blur-md bg-white shadow-xl border border-gray-100"
       >
         <div className="space-y-6 sm:space-y-8">
           <div className="text-center mb-6 sm:mb-8">
-            <h1 ref={titleRef} className="text-4xl sm:text-5xl font-bold text-green-800 tracking-wider">
+            <h1 ref={titleRef} className="text-4xl sm:text-5xl font-bold text-black tracking-wider">
               <span className="sm:hidden inline-block">
                 WHY
                 <br />

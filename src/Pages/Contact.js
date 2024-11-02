@@ -29,10 +29,10 @@ const Contact = () => {
   return (
     <>
       <Navbar />
-      <div className="min-h-screen bg-green-50">
+      <div className="min-h-screen">
         <div className="md:pt-24 pt-16 pb-16">
           <div className="flex items-center justify-center mb-4"></div>
-          <h2 className="text-4xl md:text-5xl font-bold text-green-600 text-center mb-3 animate-fadeIn">
+          <h2 className="text-4xl md:text-5xl font-bold text-center mb-3 animate-fadeIn">
             CONTACT US
           </h2>
           <div className="w-32 h-1 bg-green-500 mx-auto rounded-full animate-scaleIn" />

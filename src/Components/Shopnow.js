@@ -10,81 +10,58 @@ const Shopnow = ({ onShopClick }) => {
   const brushRef = useRef(null);
   const textRef = useRef(null);
   const imageWrapperRef = useRef(null);
-  const overlayRef = useRef(null);
+  const imageRef = useRef(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
       gsap.set(textRef.current, {
         opacity: 0,
-        y: 30
+        y: 50
       });
 
-      gsap.set(brushRef.current, {
+      gsap.set(imageRef.current, {
+        scale: 0.8,
         opacity: 0,
-        scale: 0.9
+        rotationY: 45
       });
 
-      gsap.set(overlayRef.current, {
-        scaleY: 1
-      });
-
-      const introTl = gsap.timeline({
+      const mainTl = gsap.timeline({
         scrollTrigger: {
           trigger: containerRef.current,
-          start: 'top 80%',
+          start: 'top 60%',
           toggleActions: 'play none none reverse'
         }
       });
 
-      introTl
-        .to(overlayRef.current, {
-          scaleY: 0,
-          duration: 1.2,
-          ease: 'power2.inOut',
-          transformOrigin: 'top'
-        })
-        .from(imageWrapperRef.current, {
-          clipPath: 'inset(100% 0 0 0)',
-          duration: 1,
-          ease: 'power4.out'
-        }, '-=0.5')
-        .to(brushRef.current, {
-          opacity: 1,
+      mainTl
+        .to(imageRef.current, {
           scale: 1,
-          duration: 1,
-          ease: 'power3.out'
-        }, '-=0.5')
+          opacity: 1,
+          rotationY: 0,
+          duration: 1.2,
+          ease: "back.out(1.7)"
+        })
         .to(textRef.current, {
           opacity: 1,
           y: 0,
-          duration: 1,
-          ease: 'power3.out'
-        }, '-=0.5');
+          duration: 0.8,
+          ease: "power3.out"
+        }, "-=0.5");
 
-      const scrollTl = gsap.timeline({
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: 'top top',
-          end: '+=100%',
-          pin: true,
-          scrub: 1.2,
-        }
+      imageWrapperRef.current.addEventListener('mouseenter', () => {
+        gsap.to(imageRef.current, {
+          scale: 1.05,
+          duration: 0.5,
+          ease: "power2.out"
+        });
       });
 
-      scrollTl
-        .to(brushRef.current, {
-          y: -20,
-          scale: 1.05,
-          duration: 1,
-          ease: 'power1.inOut'
-        }, 0);
-
-      gsap.to('.glow-effect', {
-        boxShadow: '0 0 30px rgba(45, 106, 79, 0.6)',
-        duration: 1.5,
-        repeat: -1,
-        yoyo: true,
-        ease: 'power1.inOut'
+      imageWrapperRef.current.addEventListener('mouseleave', () => {
+        gsap.to(imageRef.current, {
+          scale: 1,
+          duration: 0.5,
+          ease: "power2.inOut"
+        });
       });
     });
 
@@ -93,17 +70,13 @@ const Shopnow = ({ onShopClick }) => {
 
   return (
     <div className="w-full overflow-x-hidden">
-      <div ref={containerRef} className="relative min-h-screen bg-[#f5f9f5] max-w-[1920px] mx-auto">
-        <div 
-          ref={overlayRef} 
-          className="absolute inset-0 bg-[#2D6A4F] transform-origin-top z-50"
-        />
-        
+      <div ref={containerRef} className="relative min-h-screen bg-white max-w-[1920px] mx-auto">
         <div className="relative h-screen flex items-center justify-center">
           <div ref={brushRef} className="relative z-10 flex flex-col items-center w-full max-w-2xl mx-auto px-4">
             <div className="relative mb-8" ref={imageWrapperRef}>
-              <div className="glow-effect relative bg-white rounded-[2rem] p-6 shadow-lg w-full aspect-video flex items-center justify-center overflow-hidden transition-shadow duration-300">
+              <div className="relative bg-white rounded-[2rem] p-6 shadow-lg w-full aspect-video flex items-center justify-center overflow-hidden">
                 <img 
+                  ref={imageRef}
                   src={cup} 
                   alt="Bamboo Toothbrush" 
                   className="w-full h-full object-cover rounded-[1.5rem]"
@@ -112,10 +85,10 @@ const Shopnow = ({ onShopClick }) => {
             </div>
             
             <div ref={textRef} className="text-center">
-              <h2 className="text-[2.5rem] font-bold text-[#2D6A4F] mb-4 leading-tight">
+              <h2 className="text-[2.5rem] font-bold text-black mb-4 leading-tight">
                 Eco-Friendly Bamboo Toothbrush
               </h2>
-              <p className="text-lg text-[#2D6A4F] max-w-md mx-auto mb-8">
+              <p className="text-lg text-gray-600 max-w-md mx-auto mb-8">
                 Made from sustainable bamboo, our toothbrushes are 100% biodegradable and perfect for a plastic-free lifestyle.
               </p>
               <div className="flex justify-center mt-8" style={{ zIndex: 10 }}>
