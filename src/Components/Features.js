@@ -237,15 +237,15 @@ const Features = () => {
             </div>
           </div>
           <div className="flex justify-center">
-            <div className="w-[80%] md:w-[100%] max-w-[500px] p-8 rounded-2xl bg-gradient-to-br from-white via-gray-50 to-gray-100 shadow-xl">
-              <img
-                ref={el => imagesRef.current[2] = el}
-                src={brush3}
-                alt="Bamboo Toothbrush Specifications"
-                className="w-full h-full object-contain"
-              />
-            </div>
-          </div>
+    <div className="w-[80%] md:w-[100%] max-w-[500px] rounded-2xl bg-gradient-to-br from-white via-gray-50 to-gray-100 shadow-xl overflow-hidden">
+        <img
+            ref={el => imagesRef.current[2] = el}
+            src={brush3}
+            alt="Bamboo Toothbrush Specifications"
+            className="w-100 h-500px scale-110"
+        />
+    </div>
+</div>
         </div>
       </section>
     </div>
