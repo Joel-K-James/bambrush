@@ -1,25 +1,16 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
+import logo from "../Assets/bambrush_logo.webp";
 
 const Loader = ({ onLoadingComplete }) => {
   const loaderRef = useRef(null);
-  const circleRef = useRef(null);
-  const stemRef = useRef(null);
-  const leftLeafRef = useRef(null);
-  const rightLeafRef = useRef(null);
+  const sproutRef = useRef(null);
   const textRef = useRef(null);
   const [isHidden, setIsHidden] = useState(false);
 
   useEffect(() => {
-    if (
-      !loaderRef.current ||
-      !circleRef.current ||
-      !stemRef.current ||
-      !leftLeafRef.current ||
-      !rightLeafRef.current ||
-      !textRef.current
-    ) {
-      return; // Exit if any ref is null
+    if (!loaderRef.current || !sproutRef.current || !textRef.current) {
+      return;
     }
 
     const tl = gsap.timeline({
@@ -29,7 +20,7 @@ const Loader = ({ onLoadingComplete }) => {
             opacity: 0,
             duration: 0.5,
             onComplete: () => {
-              setIsHidden(true); // Set hidden after fade out
+              setIsHidden(true);
               onLoadingComplete();
             }
           });
@@ -37,100 +28,63 @@ const Loader = ({ onLoadingComplete }) => {
       }
     });
 
-    gsap.set([leftLeafRef.current, rightLeafRef.current], {
+    gsap.set(sproutRef.current, {
       scale: 0,
-      opacity: 0
+      opacity: 0,
+      rotation: -10,
+      transformOrigin: "center bottom"
     });
-    gsap.set(stemRef.current, {
-      scaleY: 0,
-      transformOrigin: 'bottom'
-    });
-    gsap.set(circleRef.current, {
-      scale: 0,
-      opacity: 0
-    });
+    
     gsap.set(textRef.current, {
       opacity: 0,
       y: 20
     });
 
-    tl.to(circleRef.current, {
-      scale: 1,
+    tl.to(sproutRef.current, {
+      scale: 0.3,
       opacity: 1,
-      duration: 0.8,
-      ease: "elastic.out(1, 0.75)"
+      duration: 0.4,
+      ease: "power2.out"
     })
-    .to(stemRef.current, {
-      scaleY: 1,
-      duration: 1,
-      ease: "power4.out"
-    }, "-=0.3")
-    .to([leftLeafRef.current, rightLeafRef.current], {
+    .to(sproutRef.current, {
       scale: 1,
-      opacity: 1,
-      duration: 0.8,
-      stagger: 0.1,
-      ease: "back.out(1.7)"
-    }, "-=0.4")
+      rotation: 0,
+      duration: 1,
+      ease: "elastic.out(1, 0.5)"
+    })
+    .to(sproutRef.current, {
+      y: -10,
+      duration: 0.5,
+      ease: "power2.out",
+      yoyo: true,
+      repeat: 1
+    }, "-=0.5")
     .to(textRef.current, {
       opacity: 1,
       y: 0,
       duration: 0.5,
       ease: "power2.out"
-    }, "-=0.3");
+    }, "-=0.8");
 
   }, [onLoadingComplete]);
 
-  if (isHidden) return null; // Hide component completely after animation
+  if (isHidden) return null;
 
   return (
-    <div 
+    <div
       ref={loaderRef}
       className="fixed inset-0 bg-white z-50 flex flex-col items-center justify-center"
     >
-      <div className="w-32 h-32 md:w-40 md:h-40 relative">
-        <svg 
-          viewBox="0 0 100 100" 
+      <div className="w-32 h-32 md:w-40 md:h-40 relative overflow-visible">
+        <img
+          ref={sproutRef}
+          src={logo}
+          alt="Loading sprout logo"
           className="w-full h-full"
-        >
-          <circle
-            ref={circleRef}
-            cx="50"
-            cy="50"
-            r="50"
-            fill="#8CC63F"
-          />
-          
-          <path
-            ref={stemRef}
-            d="M50 75 L50 35"
-            stroke="white"
-            strokeWidth="4"
-            fill="none"
-            strokeLinecap="round"
-          />
-          
-          <path
-            ref={leftLeafRef}
-            d="M50 35 Q40 25 35 35"
-            stroke="white"
-            strokeWidth="4"
-            fill="none"
-            strokeLinecap="round"
-          />
-          
-          <path
-            ref={rightLeafRef}
-            d="M50 35 Q60 25 65 35"
-            stroke="white"
-            strokeWidth="4"
-            fill="none"
-            strokeLinecap="round"
-          />
-        </svg>
+        />
       </div>
 
-      <div 
+      <div
         ref={textRef}
         className="mt-6 text-2xl md:text-3xl font-bold tracking-wider text-green-600"
       >
@@ -141,4 +95,6 @@ const Loader = ({ onLoadingComplete }) => {
 };
 
 export default Loader;
+
+
 
