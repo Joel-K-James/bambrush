@@ -75,7 +75,7 @@ const Navbar = ({ isLoading }) => {
             <img 
               src={logo} 
               alt="BamBrush Logo" 
-              className="h-12 w-16"
+              className="h-12 w-12"
             />
             <span className="text-3xl font-medium tracking-wide">
               BAMBRUSH
