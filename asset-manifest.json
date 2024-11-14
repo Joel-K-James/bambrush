@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/bambrush/home/static/css/main.26648954.css",
-    "main.js": "/bambrush/home/static/js/main.4749dbfa.js",
-    "static/js/453.54845515.chunk.js": "/bambrush/home/static/js/453.54845515.chunk.js",
-    "static/media/DSC01636.webp": "/bambrush/home/static/media/DSC01636.87dfc98dc27c6d497be6.webp",
-    "static/media/3.webp": "/bambrush/home/static/media/3.1e23dfc273d70add8513.webp",
-    "static/media/2.webp": "/bambrush/home/static/media/2.90cdd14fdf8297426eb3.webp",
-    "static/media/1.webp": "/bambrush/home/static/media/1.0bd39e5bfa1483fe7d04.webp",
-    "static/media/5.webp": "/bambrush/home/static/media/5.5a38e497fd1e327f7438.webp",
-    "static/media/DSC01711.webp": "/bambrush/home/static/media/DSC01711.6f74059c1270459aa892.webp",
-    "static/media/bambrush_logo.webp": "/bambrush/home/static/media/bambrush_logo.49ed61dae34210f89908.webp",
-    "index.html": "/bambrush/home/index.html",
-    "main.26648954.css.map": "/bambrush/home/static/css/main.26648954.css.map",
-    "main.4749dbfa.js.map": "/bambrush/home/static/js/main.4749dbfa.js.map",
-    "453.54845515.chunk.js.map": "/bambrush/home/static/js/453.54845515.chunk.js.map"
+    "main.css": "/bambrush/static/css/main.26648954.css",
+    "main.js": "/bambrush/static/js/main.fce819eb.js",
+    "static/js/453.54845515.chunk.js": "/bambrush/static/js/453.54845515.chunk.js",
+    "static/media/DSC01636.webp": "/bambrush/static/media/DSC01636.87dfc98dc27c6d497be6.webp",
+    "static/media/3.webp": "/bambrush/static/media/3.1e23dfc273d70add8513.webp",
+    "static/media/2.webp": "/bambrush/static/media/2.90cdd14fdf8297426eb3.webp",
+    "static/media/1.webp": "/bambrush/static/media/1.0bd39e5bfa1483fe7d04.webp",
+    "static/media/5.webp": "/bambrush/static/media/5.5a38e497fd1e327f7438.webp",
+    "static/media/DSC01711.webp": "/bambrush/static/media/DSC01711.6f74059c1270459aa892.webp",
+    "static/media/bambrush_logo.webp": "/bambrush/static/media/bambrush_logo.49ed61dae34210f89908.webp",
+    "index.html": "/bambrush/index.html",
+    "main.26648954.css.map": "/bambrush/static/css/main.26648954.css.map",
+    "main.fce819eb.js.map": "/bambrush/static/js/main.fce819eb.js.map",
+    "453.54845515.chunk.js.map": "/bambrush/static/js/453.54845515.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.26648954.css",
-    "static/js/main.4749dbfa.js"
+    "static/js/main.fce819eb.js"
   ]
 }
