@@ -34,7 +34,7 @@ const Footer = () => {
           Join the movement towards a sustainable future.
         </p>
         <a
-          href="https://www.amazon.in"
+          href="https://amzn.in/d/0TyszWB"
           target="_blank"
           rel="noopener noreferrer"
           className="inline-block mt-4 px-6 py-3 bg-green-600 hover:bg-green-700 text-white rounded-full font-semibold shadow-md transition-all duration-300"
@@ -45,18 +45,18 @@ const Footer = () => {
         <div className="flex justify-center space-x-8 mt-6 text-sm font-medium">
         <a href="/" className="hover:underline">Home</a>
           <a href="/about" className="hover:underline">About Us</a>
-          <a href="https://www.amazon.in" className="hover:underline">Shop</a>
+          <a href="https://amzn.in/d/0TyszWB" className="hover:underline">Shop</a>
           <a href="/contact" className="hover:underline">Contact</a>
         </div>
 
         <div className="flex justify-center space-x-6 mt-4">
-          <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" className="text-[#2D6A4F] hover:text-green-600 transition duration-300">
+          <a href="https://www.instagram.com/bambrush.in?igsh=MTFkcGkwaWt2b21ydw==" target="_blank" rel="noopener noreferrer" className="text-[#2D6A4F] hover:text-green-600 transition duration-300">
             <FaInstagram size={24} />
           </a>
           <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" className="text-[#2D6A4F] hover:text-green-600 transition duration-300">
             <FaFacebookF size={24} />
           </a>
-          <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer" className="text-[#2D6A4F] hover:text-green-600 transition duration-300">
+          <a href="https://www.linkedin.com/company/bambrush-india/" target="_blank" rel="noopener noreferrer" className="text-[#2D6A4F] hover:text-green-600 transition duration-300">
             <FaLinkedinIn size={24} />
           </a>
         </div>

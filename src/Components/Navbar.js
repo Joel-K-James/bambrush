@@ -58,7 +58,7 @@ const Navbar = ({ isLoading }) => {
     { name: 'Contact', path: '/contact' },
     { 
       name: 'Shop', 
-      path: 'https://www.amazon.com',
+      path: 'https://amzn.in/d/0TyszWB',
       isButton: true 
     }
   ];

@@ -93,7 +93,7 @@ const Shopnow = ({ onShopClick }) => {
               </p>
               <div className="flex justify-center mt-8" style={{ zIndex: 10 }}>
                 <a
-                  href="https://www.amazon.in"
+                  href="https://amzn.in/d/0TyszWB"
                   target="_blank"
                   rel="noopener noreferrer"
                   style={{ cursor: 'pointer', pointerEvents: 'auto' }}
