@@ -1,5 +1,5 @@
 {
-  "homepage": "https://www.bambrush.co.in/",
+  "homepage": "https://joel-k-james.github.io/bambrush",
   "name": "bambrush",
   "version": "0.1.0",
   "private": true,
@@ -21,7 +21,7 @@
     "start": "react-scripts start",
     "homepage" : "url",
     "predeploy":"npm run build",
-    "deploy":"gh-pages -d build",
+  "deploy":"gh-pages -d build",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
